@@ -1,0 +1,7 @@
+.bucket-container {
+  display: flex;
+}
+
+.bucket-container > app-bucket {
+  margin-right: 20px;
+}

@@ -1,5 +1,10 @@
 {
-  "templates": [],
+  "templates": [
+    {
+      "name": "New Template",
+      "id": 1
+    }
+  ],
   "buckets": [],
   "lineitems": []
 }

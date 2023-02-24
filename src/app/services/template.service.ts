@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class TemplateService {
-  private apiUrl = 'http://localhost:5000/template';
+  private apiUrl = 'http://localhost:5000/templates';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +15,9 @@ export class TemplateService {
     return this.http.get<Template[]>(this.apiUrl);
   }
 
-  addTemplate(template: Template): Observable<Template> {
-    return this.http.post<Template>(this.apiUrl, template);
+  createTemplate(): Observable<Template> {
+    return this.http.post<Template>(this.apiUrl, {
+      name: "New Template",
+    });
   }
 }
