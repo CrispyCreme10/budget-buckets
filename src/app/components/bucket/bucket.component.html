@@ -1,6 +1,9 @@
 <div class="bucket">
-  <div class="line-item-container">
+  <span style="margin-bottom: 10px; font-size: 20px;">Bucket Title</span>
+  <div class="line-item-container" *ngFor="let lineitem of lineItems">
     <app-line-item></app-line-item>
   </div>
-  <button>Add Line Item</button>
+  <button (click)="createLineItem()">Add Line Item</button>
+  <hr style="width: 100%;" />
+  <span>Bucket Total: {{getTotalFormatted()}}</span>
 </div>

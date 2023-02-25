@@ -5,3 +5,7 @@
 .bucket-container > app-bucket {
   margin-right: 20px;
 }
+
+.app-bucket {
+  min-width: 50%;
+}

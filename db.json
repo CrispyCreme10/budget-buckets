@@ -6,5 +6,26 @@
     }
   ],
   "buckets": [],
-  "lineitems": []
+  "lineitems": [
+    {
+      "bucketId": 1,
+      "id": 1
+    },
+    {
+      "bucketId": 1,
+      "id": 2
+    },
+    {
+      "bucketId": 1,
+      "id": 3
+    },
+    {
+      "bucketId": 1,
+      "id": 4
+    },
+    {
+      "bucketId": 1,
+      "id": 5
+    }
+  ]
 }

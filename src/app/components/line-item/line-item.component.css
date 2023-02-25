@@ -1,0 +1,7 @@
+.line-item {
+  display: flex;
+}
+
+.line-item > input {
+  width: 50%;
+}
