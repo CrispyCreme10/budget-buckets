@@ -1,6 +1,7 @@
 import { LineItem } from './../../types';
 import { Component, Input } from '@angular/core';
 import { LineItemService } from 'src/app/services/line-item.service';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-line-item',
@@ -9,6 +10,7 @@ import { LineItemService } from 'src/app/services/line-item.service';
 })
 export class LineItemComponent {
   @Input() lineItem!: LineItem;
+  faTimes = faTimes;
 
   constructor(private lineItemService: LineItemService) {}
 

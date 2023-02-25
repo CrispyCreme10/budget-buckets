@@ -1,3 +1,4 @@
+import { BucketService } from './../../services/bucket.service';
 import { LineItemService } from './../../services/line-item.service';
 import { LineItem, Bucket } from './../../types';
 import { Component, Input } from '@angular/core';
@@ -10,7 +11,7 @@ import { Component, Input } from '@angular/core';
 export class BucketComponent {
   @Input() bucket!: Bucket;
 
-  constructor(private lineItemService: LineItemService) {}
+  constructor(private lineItemService: LineItemService, private bucketService: BucketService) {}
 
   ngOnInit() {
     this.lineItemService.getLineItems().subscribe(items => this.bucket.items = items.filter(i => i.bucketId === this.bucket.id));
@@ -18,6 +19,11 @@ export class BucketComponent {
 
   createLineItem() {
     this.lineItemService.addLineItem(this.bucket.id).subscribe(item => this.bucket.items.push(item));
+  }
+
+  onNameChange(event: Event) {
+    this.bucket.name = (event.target as HTMLDivElement).innerText;
+    this.bucketService.updateBucket(this.bucket).subscribe();
   }
 
   getTotalFormatted(): string {

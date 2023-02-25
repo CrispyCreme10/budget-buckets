@@ -1,5 +1,5 @@
 <div class="bucket">
-  <span style="margin-bottom: 10px; font-size: 20px;">{{bucket.name}}</span>
+  <span style="margin-bottom: 10px; font-size: 20px;" contenteditable="" (blur)="onNameChange($event)">{{bucket.name}}</span>
   <div class="line-item-container" >
     <app-line-item *ngFor="let lineitem of bucket.items" [lineItem]="lineitem"></app-line-item>
   </div>

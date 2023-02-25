@@ -1,4 +1,5 @@
 <div class="line-item">
   <input type="text" name="name" placeholder="Name" [value]="lineItem.name" (blur)="setName($event)" />
   <input type="number" name="amount" [value]="lineItem.amount" (blur)="setAmount($event)">
+  <fa-icon [icon]="faTimes"></fa-icon>
 </div>
