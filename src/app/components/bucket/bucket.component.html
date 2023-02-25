@@ -1,7 +1,7 @@
 <div class="bucket">
-  <span style="margin-bottom: 10px; font-size: 20px;">Bucket Title</span>
-  <div class="line-item-container" *ngFor="let lineitem of lineItems">
-    <app-line-item></app-line-item>
+  <span style="margin-bottom: 10px; font-size: 20px;">{{bucket.name}}</span>
+  <div class="line-item-container" >
+    <app-line-item *ngFor="let lineitem of bucket.items" [lineItem]="lineitem"></app-line-item>
   </div>
   <button (click)="createLineItem()">Add Line Item</button>
   <hr style="width: 100%;" />

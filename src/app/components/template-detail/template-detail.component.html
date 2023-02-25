@@ -1,4 +1,3 @@
 <div class="bucket-container">
-  <div class="app-bucket"></div>
-  <div class="app-bucket"></div>
+  <div class="app-bucket" *ngFor="let bucket of template.buckets" [bucket]="bucket"></div>
 </div>

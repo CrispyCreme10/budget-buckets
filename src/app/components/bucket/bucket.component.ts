@@ -1,6 +1,6 @@
 import { LineItemService } from './../../services/line-item.service';
-import { LineItem } from './../../types';
-import { Component } from '@angular/core';
+import { LineItem, Bucket } from './../../types';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: '.app-bucket',
@@ -8,25 +8,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./bucket.component.css']
 })
 export class BucketComponent {
-  id!: number;
-  total!: number;
-  lineItems: LineItem[] = [];
+  @Input() bucket!: Bucket;
 
   constructor(private lineItemService: LineItemService) {}
 
   ngOnInit() {
-    this.lineItemService.getLineItems().subscribe(items => this.lineItems = items);
+    this.lineItemService.getLineItems().subscribe(items => this.bucket.items = items.filter(i => i.bucketId === this.bucket.id));
   }
 
   createLineItem() {
-    this.lineItemService.addLineItem(1).subscribe(item => this.lineItems.push(item));
+    this.lineItemService.addLineItem(this.bucket.id).subscribe(item => this.bucket.items.push(item));
   }
 
   getTotalFormatted(): string {
-    const formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return this.total !== undefined ? formatter.format(this.total) : "$0.00";
+    if (this.bucket.items !== undefined && this.bucket.items.length > 0) {
+      const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
+      const total = this.bucket.items.reduce((sum, a) => sum + a.amount, 0);
+      return formatter.format(total);
+    }
+
+    return "$0.00";
   }
 }

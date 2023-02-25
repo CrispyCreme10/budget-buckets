@@ -2,30 +2,21 @@
   "templates": [
     {
       "name": "New Template",
-      "id": 1
+      "id": 0
     }
   ],
-  "buckets": [],
-  "lineitems": [
+  "buckets": [
     {
-      "bucketId": 1,
-      "id": 1
+      "id": 0,
+      "templateId": 0,
+      "name": "Bucket 1"
     },
     {
-      "bucketId": 1,
-      "id": 2
-    },
-    {
-      "bucketId": 1,
-      "id": 3
-    },
-    {
-      "bucketId": 1,
-      "id": 4
-    },
-    {
-      "bucketId": 1,
-      "id": 5
+      "id": 1,
+      "templateId": 0,
+      "name": "Bucket 2"
     }
+  ],
+  "lineitems": [
   ]
 }

@@ -23,7 +23,14 @@ export class LineItemService {
 
   addLineItem(bucketId: number): Observable<LineItem> {
     return this.http.post<LineItem>(this.apiUrl, {
-      bucketId: bucketId
+      bucketId: bucketId,
+      name: '',
+      amount: 0
     }, httpOptions);
+  }
+
+  updateLineItem(lineItem: LineItem): Observable<LineItem> {
+    const url = `${this.apiUrl}/${lineItem.id}`;
+    return this.http.put<LineItem>(url, lineItem, httpOptions);
   }
 }
