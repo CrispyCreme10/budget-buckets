@@ -1,3 +1,15 @@
-<div class="bucket-container">
-  <div class="app-bucket" *ngFor="let bucket of template.buckets" [bucket]="bucket"></div>
+<div class="widget-container">
+  <div id="income" class="widget">
+    <span>Income</span>
+    <app-income-widget></app-income-widget>
+  </div>
+  <div id="stats" class="widget">
+    <span>Income & Expense Stats</span>
+  </div>
+  <div id="expenses" class="widget">
+    <span>Expenses</span>
+  </div>
+  <div id="calendar" class="widget">
+    <span>Calendar</span>
+  </div>
 </div>

@@ -1,12 +1,29 @@
-.bucket-container {
+.widget-container {
+  display: grid;
+  grid-template-areas: 
+    "income stats"
+    "expenses calendar";
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 2fr;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.widget {
   display: flex;
+  flex-direction: column;
+
+  background-color: #d9d9d9;
+  margin: 2px;
+  border: 2px solid black;
+  border-radius: 8px;
 }
 
-.bucket-container > app-bucket {
-  margin-right: 20px;
-}
-
-.app-bucket {
-  width: 360px;
-  margin-right: 20px;
+.widget > span {
+  display: block;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
 }

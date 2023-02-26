@@ -11,6 +11,8 @@ import { LineItemComponent } from './components/line-item/line-item.component';
 import { AddTemplateComponent } from './components/add-template/add-template.component';
 import { HomeComponent } from './components/home/home.component';
 import { TemplateDetailComponent } from './components/template-detail/template-detail.component';
+import { IncomeWidgetComponent } from './components/income-widget/income-widget.component';
+import { TableRowComponent } from './components/table-row/table-row.component';
 
 
 // const appRoutes: Routes = [
@@ -35,6 +37,8 @@ import { TemplateDetailComponent } from './components/template-detail/template-d
     AddTemplateComponent,
     HomeComponent,
     TemplateDetailComponent,
+    IncomeWidgetComponent,
+    TableRowComponent,
   ],
   imports: [
     BrowserModule,

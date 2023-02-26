@@ -1,0 +1,43 @@
+:host {
+  height: 100%;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+thead > tr {
+  border-bottom: 2px solid black;
+}
+
+th {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.cell-input-filled {
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 2px;
+  padding: 5px 10px;
+}
+
+.cell-input-extra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cell-dropdown {
+  background-color: #f6f6f6;
+}
+
+.cell-input-add {
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 38px;
+  margin: 2px;
+  padding: 5px 10px;
+}
