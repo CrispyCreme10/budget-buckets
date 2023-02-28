@@ -20,13 +20,17 @@
   grid-row: 1 / span 1;
 }
 
-#monthly-expenses {
+.expenses {
   grid-row: 2 / span 4;
+}
+
+.stats h4 {
+  text-align: center;
 }
 
 .calendar {
   grid-column-start: 2;
-  grid-row: 1 / span 4;
+  grid-row: 2 / span 4;
 
   padding: 20px;
 }
