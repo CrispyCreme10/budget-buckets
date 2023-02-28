@@ -13,6 +13,9 @@ import { HomeComponent } from './components/home/home.component';
 import { TemplateDetailComponent } from './components/template-detail/template-detail.component';
 import { IncomeWidgetComponent } from './components/income-widget/income-widget.component';
 import { TableRowComponent } from './components/table-row/table-row.component';
+import { SimpleViewComponent } from './components/simple-view/simple-view.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ExpensesComponent } from './components/expenses/expenses.component';
 
 
 // const appRoutes: Routes = [
@@ -39,6 +42,9 @@ import { TableRowComponent } from './components/table-row/table-row.component';
     TemplateDetailComponent,
     IncomeWidgetComponent,
     TableRowComponent,
+    SimpleViewComponent,
+    CalendarComponent,
+    ExpensesComponent,
   ],
   imports: [
     BrowserModule,
