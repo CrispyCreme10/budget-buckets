@@ -16,6 +16,7 @@ import { TableRowComponent } from './components/table-row/table-row.component';
 import { SimpleViewComponent } from './components/simple-view/simple-view.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
+import { ExpenseCategoryComponent } from './components/expense-category/expense-category.component';
 
 
 // const appRoutes: Routes = [
@@ -45,6 +46,7 @@ import { ExpensesComponent } from './components/expenses/expenses.component';
     SimpleViewComponent,
     CalendarComponent,
     ExpensesComponent,
+    ExpenseCategoryComponent,
   ],
   imports: [
     BrowserModule,

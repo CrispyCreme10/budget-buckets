@@ -1,11 +1,29 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 h3 {
   text-align: center;
+  margin: 0 10px;
+  width: 130px;
+  user-select: none;
+}
+
+.header > fa-icon {
+  font-size: 20px;
+}
+
+.header > fa-icon:hover {
+  cursor: pointer;
 }
 
 .cell-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
 
   height: 90%;
 }

@@ -1,6 +1,14 @@
-<h3>{{getFormattedTitleDate()}}</h3>
+<div class="header">
+  <fa-icon [icon]="faAngleLeft" (click)="shiftMonth(-1)"></fa-icon>
+  <h3>{{ getFormattedTitleDate() }}</h3>
+  <fa-icon [icon]="faAngleRight" (click)="shiftMonth(1)"></fa-icon>
+</div>
 <div class="cell-container">
-  <div class="cell" *ngFor="let date of calendarDates">
-    <span>{{date}}</span>
+  <div
+    class="cell"
+    *ngFor="let date of calendarDates"
+    [ngStyle]="{ opacity: date.isInCurrMonth ? '100%' : '50%' }"
+  >
+    <span>{{ date.dateStr }}</span>
   </div>
 </div>

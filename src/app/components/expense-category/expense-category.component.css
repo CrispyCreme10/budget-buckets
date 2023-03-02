@@ -1,0 +1,11 @@
+.collapsable {
+  border-top: 2px solid black;
+}
+
+.collapsable:hover {
+  cursor: pointer;
+}
+
+.collapsable > span {
+  text-transform: uppercase;
+}
