@@ -1,0 +1,9 @@
+<div class="collapsable" (click)="toggleCollapse()">
+  <div class="icon">
+    <fa-icon [icon]="getCollapsableIcon()"></fa-icon>
+  </div>
+  <span>{{ name }}</span>
+  <div class="collpasable-content">
+    <ng-content></ng-content>
+  </div>
+</div>

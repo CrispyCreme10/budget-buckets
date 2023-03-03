@@ -1,0 +1,30 @@
+:host {
+  flex-grow: 0;
+  transition: flex-grow 0.25s;
+}
+
+:host.expanded {
+  flex-grow: 2;
+  transition: flex-grow 0.25s;
+}
+
+.collapsable {
+  border-top: 2px solid #474747;
+  color: #ddd;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.collapsable:hover {
+  cursor: pointer;
+}
+
+.collapsable .icon {
+  display: inline-block;
+  width: 22px;
+  text-align: center;
+}
+
+.collapsable > span {
+  text-transform: uppercase;
+}

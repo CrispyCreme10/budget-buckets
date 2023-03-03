@@ -17,6 +17,7 @@ import { SimpleViewComponent } from './components/simple-view/simple-view.compon
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { ExpenseCategoryComponent } from './components/expense-category/expense-category.component';
+import { SidebarCollapsableComponent } from './components/sidebar-collapsable/sidebar-collapsable.component';
 
 
 // const appRoutes: Routes = [
@@ -47,6 +48,7 @@ import { ExpenseCategoryComponent } from './components/expense-category/expense-
     CalendarComponent,
     ExpensesComponent,
     ExpenseCategoryComponent,
+    SidebarCollapsableComponent,
   ],
   imports: [
     BrowserModule,

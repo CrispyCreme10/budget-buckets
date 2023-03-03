@@ -1,17 +1,28 @@
 <div class="simple-view">
-  <div class="income box">
-    <label for="frequency">Frequency</label>
-    <select name="frequency">
-      <option value="bi-weekly">Bi-Weekly</option>
-    </select>
-    <label for="income-amount">Income</label>
-    <input type="number" name="income-amount" placeholder="Enter income amount..." />
-    <label for="recent-income-date">Recent income date</label>
-    <input type="date" name="recent-income-date" />
+  <div class="explorer box box-light">
+    <div id="explorer-header">
+      <span>Functions</span>
+      <fa-icon id="header-settings" [icon]="faEllipsis"></fa-icon>
+    </div>
+    <div id="explorer-categories">
+      <app-sidebar-collapsable name="Income">
+
+      </app-sidebar-collapsable>
+      <app-sidebar-collapsable name="Recurring Expenses">
+
+      </app-sidebar-collapsable>
+      <app-sidebar-collapsable name="Individual Expenses">
+
+      </app-sidebar-collapsable>
+    </div>
+    <div id="explorer-footer">
+      <fa-icon id="settings-icon" [icon]="faGear"></fa-icon>
+      <fa-icon id="support-icon" [icon]="faHeadset"></fa-icon>
+      <fa-icon id="profile-icon" [icon]="faUser"></fa-icon>      
+    </div>
   </div>
-  <app-expenses class="expenses box"></app-expenses>
-  <div class="stats box">
+  <div class="stats box box-medium">
     <h4>Stats</h4>
   </div>
-  <app-calendar class="calendar box"></app-calendar>
+  <app-calendar class="calendar box box-dark"></app-calendar>
 </div>
