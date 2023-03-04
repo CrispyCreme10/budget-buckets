@@ -1,0 +1,11 @@
+# TODO
+- Add Calendar view switcher
+- Add Week Calendar view
+- Add Day Calendar view
+- Add current day highlighter to all relevant Calendar views
+- Header settings icon should stay highlighted while it is open
+- Header settings should take sole focus; this means that nothing else is interactable and clicking anything else will close the header settings panel
+- Set max width on the Explorer/Sidebar container
+- Handle responsiveness
+- Implement Explorer footer icons tooltips
+- Expand Calendar to fill all available space + some padding

@@ -23,15 +23,38 @@ h3 {
 
 .cell-container {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template: .3fr repeat(6, 1fr) / repeat(7, 1fr);
 
   height: 90%;
 }
 
+.cell-container .day-header {
+  color: #ddd;
+  text-align: center;
+  user-select: none;
+}
+
 .cell {
+  display: grid;
+  grid-template: repeat(4, 25%) / 1fr;  
+
   padding: 5px;
   border: 1px solid #ddd;
   color: #ddd;
   background-color: var(--box-light);
+}
+
+.cell div:nth-child(1) {
+  justify-self: center;
+}
+
+.cell .date-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  width: fit-content;
+  padding: 12px;
+  border-radius: 30px;
+  user-select: none;
 }

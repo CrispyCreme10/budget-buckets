@@ -32,4 +32,5 @@ app-sidebar-collapsable:nth-of-type(1) > div.collapsable {
 
 .collapsable > span {
   text-transform: uppercase;
+  user-select: none;
 }

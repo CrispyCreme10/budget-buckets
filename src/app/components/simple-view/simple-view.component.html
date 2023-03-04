@@ -4,18 +4,22 @@
       <span>Explorer</span>
       <div>
         <fa-icon id="header-settings" [icon]="faEllipsis" (click)="openHeaderSettings()"></fa-icon>
-        <div id="collapsable-item-container" *ngIf="showHeaderSettings">
-          <div class="collapsable-item">
+        <div id="header-settings-item-container" *ngIf="showHeaderSettings">
+          <div class="header-settings-item">
             <fa-icon [icon]="faCheck"></fa-icon>
             <span>Income</span>
           </div>
-          <div class="collapsable-item">
+          <div class="header-settings-item">
             <fa-icon [icon]="faCheck"></fa-icon>
             <span>Recurring Expenses</span>
           </div>
-          <div class="collapsable-item">
+          <div class="header-settings-item">
             <fa-icon [icon]="faCheck"></fa-icon>
             <span>Individual Expenses</span>
+          </div>
+          <div class="header-settings-item">
+            <fa-icon [icon]="faCheck"></fa-icon>
+            <span>Stats</span>
           </div>
         </div>
       </div>
@@ -32,15 +36,19 @@
       <app-sidebar-collapsable name="Individual Expenses">
 
       </app-sidebar-collapsable>
+      <app-sidebar-collapsable name="Stats">
+
+      </app-sidebar-collapsable>
     </div>
     <div id="explorer-footer">
       <fa-icon id="settings-icon" [icon]="faGear"></fa-icon>
       <fa-icon id="support-icon" [icon]="faHeadset"></fa-icon>
-      <fa-icon id="profile-icon" [icon]="faUser"></fa-icon>      
+      <fa-icon id="profile-icon" [icon]="faUser"></fa-icon>
+      <fa-icon id="theme-icon" [icon]="getThemeIcon()" (click)="toggleTheme()"></fa-icon>
     </div>
   </div>
-  <div class="stats box box-medium">
+  <!-- <div class="stats box box-medium">
     <h4>Stats</h4>
-  </div>
+  </div> -->
   <app-calendar class="calendar box box-dark"></app-calendar>
 </div>

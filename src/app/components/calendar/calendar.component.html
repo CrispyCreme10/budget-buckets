@@ -4,11 +4,21 @@
   <fa-icon [icon]="faAngleRight" (click)="shiftMonth(1)"></fa-icon>
 </div>
 <div class="cell-container">
+  <div class="day-header">Sunday</div>
+  <div class="day-header">Monday</div>
+  <div class="day-header">Tuesday</div>
+  <div class="day-header">Wednesday</div>
+  <div class="day-header">Thursday</div>
+  <div class="day-header">Friday</div>
+  <div class="day-header">Saturday</div>
   <div
     class="cell"
-    *ngFor="let date of calendarDates"
-    [ngStyle]="{ opacity: date.isInCurrMonth ? '100%' : '50%' }"
+    *ngFor="let calendarDate of calendarDates"
+    [ngStyle]="{ opacity: calendarDate.isInCurrMonth ? '100%' : '50%' }"
   >
-    <span>{{ date.dateStr }}</span>
+    <div class="date-text" [style.backgroundColor]="isDateToday(calendarDate.date) ? '#04395e' : ''">{{ calendarDate.dateStr }}</div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </div>
