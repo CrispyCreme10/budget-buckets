@@ -1,6 +1,6 @@
 :host {
   flex-grow: 0;
-  transition: flex-grow 0.25s;
+  transition: flex-grow 0.15s;
 }
 
 :host.expanded {
@@ -13,6 +13,11 @@
   color: #ddd;
   font-weight: 600;
   font-size: 14px;
+  padding: 5px 0;
+}
+
+app-sidebar-collapsable:nth-of-type(1) > div.collapsable {
+  border: none;
 }
 
 .collapsable:hover {
