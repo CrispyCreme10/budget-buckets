@@ -1,7 +1,7 @@
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template: 1fr / repeat(3, 1fr);
+
   margin-bottom: 15px;
   color: #ddd;
 }
@@ -13,19 +13,48 @@ h3 {
   user-select: none;
 }
 
-.header > fa-icon {
+#header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  grid-column-start: 2;
+}
+
+#header-title > fa-icon {
   font-size: 20px;
 }
 
-.header > fa-icon:hover {
+#header-title > fa-icon:hover {
   cursor: pointer;
+}
+
+#calendar-view-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  grid-column-start: 3;
+
+  font-size: 25px;
+}
+
+#calendar-view-icons > fa-icon {
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+#calendar-view-icons > fa-icon:hover {
+  cursor: pointer;
+  background-color: #444;
 }
 
 .cell-container {
   display: grid;
-  grid-template: .3fr repeat(6, 1fr) / repeat(7, 1fr);
-
-  height: 90%;
+  grid-template: 0.3fr repeat(6, 1fr) / repeat(7, 1fr);
+  
+  height: 95%;
 }
 
 .cell-container .day-header {
