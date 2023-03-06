@@ -1,6 +1,11 @@
 <div class="header">
   <div id="header-title">
-    <h3>{{ calendarViewTitle }}</h3>
+    <h3 (click)="toggleDatePicker()">{{ calendarViewTitle }}</h3>
+    <app-date-picker
+      *ngIf="datePickerEnabled"
+      [title]="calendarViewTitle"
+      [startDate]="currDate"
+    ></app-date-picker>
   </div>
   <div id="calendar-view-actions">
     <button id="today-btn" (click)="setViewToToday()">Today</button>
@@ -58,10 +63,7 @@
   <div class="day-header">Thursday</div>
   <div class="day-header">Friday</div>
   <div class="day-header">Saturday</div>
-  <div
-    id="week-col"
-    *ngFor="let calendarDate of calendarDates"
-  >
+  <div id="week-col" *ngFor="let calendarDate of calendarDates">
     <div
       class="date-text"
       [style.backgroundColor]="isDateToday(calendarDate.date) ? '#04395e' : ''"
@@ -70,8 +72,4 @@
     </div>
   </div>
 </div>
-<div id="week-view" class="view-container" *ngIf="isDayView()">
-  <ng-container *ngIf="isDayView()">
-    
-  </ng-container>
-</div>
+<div id="week-view" class="view-container" *ngIf="isDayView()"></div>

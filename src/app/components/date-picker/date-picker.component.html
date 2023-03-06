@@ -1,0 +1,17 @@
+<div id="header">
+  <fa-icon [icon]="faAngleLeft"></fa-icon>
+  <span>{{ title }}</span>
+  <fa-icon [icon]="faAngleRight"></fa-icon>
+</div>
+<div id="content">
+  <div class="cell">Sun</div>
+  <div class="cell">Mon</div>
+  <div class="cell">Tue</div>
+  <div class="cell">Wed</div>
+  <div class="cell">Thu</div>
+  <div class="cell">Fri</div>
+  <div class="cell">Sat</div>
+  <div class="cell cell-clickable" *ngFor="let cellText of buildCalendarMonth()">
+    {{ cellText }}
+  </div>
+</div>

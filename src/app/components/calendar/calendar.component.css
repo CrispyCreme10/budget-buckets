@@ -6,13 +6,6 @@
   color: #ddd;
 }
 
-h3 {
-  text-align: center;
-  margin: 0 10px;
-  width: fit-content;
-  user-select: none;
-}
-
 /* HEADER TITLE */
 
 #header-title {
@@ -21,6 +14,17 @@ h3 {
   align-items: center;
 
   grid-column-start: 2;
+}
+
+#header-title h3 {
+  text-align: center;
+  margin: 0 10px;
+  width: fit-content;
+  user-select: none;
+}
+
+#header-title h3:hover {
+  cursor: pointer;
 }
 
 /* CALENDAR VIEW ACTIONS */
@@ -62,7 +66,7 @@ h3 {
 
 /* VIEW CONTAINERS */
 .view-container {
-  height: 95%;
+  height: 94%;
 }
 
 #month-view {

@@ -18,6 +18,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { ExpenseCategoryComponent } from './components/expense-category/expense-category.component';
 import { SidebarCollapsableComponent } from './components/sidebar-collapsable/sidebar-collapsable.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 
 // const appRoutes: Routes = [
@@ -49,6 +50,7 @@ import { SidebarCollapsableComponent } from './components/sidebar-collapsable/si
     ExpensesComponent,
     ExpenseCategoryComponent,
     SidebarCollapsableComponent,
+    DatePickerComponent,
   ],
   imports: [
     BrowserModule,

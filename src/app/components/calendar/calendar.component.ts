@@ -7,20 +7,17 @@ interface CalendarDate {
   isInCurrMonth: boolean
 }
 
-const monthYearOptions: Intl.DateTimeFormatOptions = {
+const longMonthYear: Intl.DateTimeFormatOptions = {
+  month: "long",
+  year: "numeric"
+};
+const shortMonthYear: Intl.DateTimeFormatOptions = {
   month: "short",
   year: "numeric"
-}
-
-const monthOptions: Intl.DateTimeFormatOptions = {
+};
+const shortMonth: Intl.DateTimeFormatOptions = {
   month: "short"
-}
-
-const dayOptions: Intl.DateTimeFormatOptions = {
-  month: "long",
-  day: "numeric",
-  year: "numeric"
-}
+};
 
 @Component({
   selector: 'app-calendar',
@@ -41,6 +38,7 @@ export class CalendarComponent {
   dateTextStyles = {};
   currentView = '';
   calendarViewTitle = '';
+  datePickerEnabled = false;
 
   // calendar view icons
   faAngleLeft = faAngleLeft;
@@ -84,26 +82,14 @@ export class CalendarComponent {
     }
     
     // set view title
-    this.calendarViewTitle = new Intl.DateTimeFormat("en-US", monthYearOptions).format(this.currDate);
+    this.calendarViewTitle = new Intl.DateTimeFormat("en-US", longMonthYear).format(this.currDate);
   }
 
   buildCalendarWeek() {
     // setup
-    const longMonthYear: Intl.DateTimeFormatOptions = {
-      month: "long",
-      year: "numeric"
-    };
-    const shortMonthYear: Intl.DateTimeFormatOptions = {
-      month: "short",
-      year: "numeric"
-    };
-    const shortMonth: Intl.DateTimeFormatOptions = {
-      month: "short"
-    };
     this.calendarDates = [];
     const dateYear = this.currDate.getFullYear();
     const dateMonth = this.currDate.getMonth();
-    console.log(this.currDate);
     const calendarDate = new Date(this.currDate);
     // set first calendar date to the first day of the current week
     calendarDate.setDate(calendarDate.getDate() - calendarDate.getDay());
@@ -113,11 +99,6 @@ export class CalendarComponent {
     const startMonth = calendarDate.getMonth();
     const startYear = calendarDate.getFullYear();
     for (let count = 0; count < this.DAYS_IN_WEEK; count++) {
-      const calendarMonth = calendarDate.getMonth();
-      if (calendarMonth !== dateMonth) {
-        followingMonthFormatted = new Intl.DateTimeFormat("en-US", monthYearOptions).format(calendarDate);
-        console.log(followingMonthFormatted);
-      }
       this.calendarDates.push({
         date: new Date(calendarDate),
         dateStr: calendarDate.getDate().toString(),
@@ -148,7 +129,18 @@ export class CalendarComponent {
   }
 
   buildCalendarDay() {
+    // setup
+    const longMonthDayYear: Intl.DateTimeFormatOptions = {
+      month: "long",
+      day: 'numeric',
+      year: "numeric"
+    };
+    this.calendarDates = [];
 
+    // execution
+
+    // set view title
+    this.calendarViewTitle = new Intl.DateTimeFormat("en-US", longMonthDayYear).format(this.currDate);
   }
 
   getCalendarViewStyles(view: string): any {
@@ -231,5 +223,9 @@ export class CalendarComponent {
           throw new Error("Error shifting Calendar");
       }      
     }
+  }
+
+  toggleDatePicker() {
+    this.datePickerEnabled = !this.datePickerEnabled;
   }
 }

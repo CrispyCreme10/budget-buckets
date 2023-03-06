@@ -1,0 +1,43 @@
+:host {
+  position: absolute;
+  background-color: var(--box-light);
+  border: 1px solid #474747;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 5px black;
+  width: 300px;
+  z-index: 1;
+  top: 65px;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 5px;
+  user-select: none;
+}
+
+#content {
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(7, 1fr);
+}
+
+#content .cell {
+  justify-self: center;
+  align-self: center;
+
+  user-select: none;
+}
+
+#content .cell-clickable {
+  border-radius: 5px;
+  width: 50%;
+  height: 100%;
+}
+
+#content .cell-clickable:hover {
+  cursor: pointer;
+  background-color: #04395e;
+}
