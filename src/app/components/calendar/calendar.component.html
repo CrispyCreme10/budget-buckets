@@ -1,28 +1,32 @@
 <div class="header">
   <div id="header-title">
-    <fa-icon [icon]="faAngleLeft" (click)="shiftMonth(-1)"></fa-icon>
-    <h3>{{ getFormattedTitleDate() }}</h3>
-    <fa-icon [icon]="faAngleRight" (click)="shiftMonth(1)"></fa-icon>
+    <h3>{{ calendarViewTitle }}</h3>
   </div>
-  <div id="calendar-view-icons">
+  <div id="calendar-view-actions">
+    <button id="today-btn" (click)="setViewToToday()">Today</button>
+    <fa-icon [icon]="faAngleLeft" (click)="shiftView(-1)"></fa-icon>
+    <fa-icon [icon]="faAngleRight" (click)="shiftView(1)"></fa-icon>
     <fa-icon
+      class="view-action"
       [icon]="faCalendarMonth"
       [ngStyle]="getCalendarViewStyles(MONTH)"
       (click)="setCalendarView(MONTH)"
     ></fa-icon>
     <fa-icon
+      class="view-action"
       [icon]="faCalendarWeek"
       [ngStyle]="getCalendarViewStyles(WEEK)"
       (click)="setCalendarView(WEEK)"
     ></fa-icon>
     <fa-icon
+      class="view-action"
       [icon]="faCalendarDay"
       [ngStyle]="getCalendarViewStyles(DAY)"
       (click)="setCalendarView(DAY)"
     ></fa-icon>
   </div>
 </div>
-<div class="cell-container">
+<div id="month-view" class="view-container" *ngIf="isMonthView()">
   <div class="day-header">Sunday</div>
   <div class="day-header">Monday</div>
   <div class="day-header">Tuesday</div>
@@ -30,37 +34,44 @@
   <div class="day-header">Thursday</div>
   <div class="day-header">Friday</div>
   <div class="day-header">Saturday</div>
-  <ng-container *ngIf="isMonthView()">
+  <div
+    id="cell"
+    *ngFor="let calendarDate of calendarDates"
+    [ngStyle]="{ opacity: calendarDate.isInCurrMonth ? '100%' : '50%' }"
+  >
     <div
-      class="cell"
-      *ngFor="let calendarDate of calendarDates"
-      [ngStyle]="{ opacity: calendarDate.isInCurrMonth ? '100%' : '50%' }"
+      class="date-text"
+      [style.backgroundColor]="isDateToday(calendarDate.date) ? '#04395e' : ''"
     >
-      <div
-        class="date-text"
-        [style.backgroundColor]="isDateToday(calendarDate.date) ? '#04395e' : ''"
-      >
-        {{ calendarDate.dateStr }}
-      </div>
-      <div></div>
-      <div></div>
-      <div></div>
+      {{ calendarDate.dateStr }}
     </div>
-  </ng-container>
-  <ng-container *ngIf="isWeekView()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<div id="week-view" class="view-container" *ngIf="isWeekView()">
+  <div class="day-header">Sunday</div>
+  <div class="day-header">Monday</div>
+  <div class="day-header">Tuesday</div>
+  <div class="day-header">Wednesday</div>
+  <div class="day-header">Thursday</div>
+  <div class="day-header">Friday</div>
+  <div class="day-header">Saturday</div>
+  <div
+    id="week-col"
+    *ngFor="let calendarDate of calendarDates"
+  >
     <div
-      class="week-col"
-      *ngFor="let calendarDate of calendarDates"
+      class="date-text"
+      [style.backgroundColor]="isDateToday(calendarDate.date) ? '#04395e' : ''"
     >
-      <div
-        class="date-text"
-        [style.backgroundColor]="isDateToday(calendarDate.date) ? '#04395e' : ''"
-      >
-        {{ calendarDate.dateStr }}
-      </div>
+      {{ calendarDate.dateStr }}
     </div>
+  </div>
+</div>
+<div id="week-view" class="view-container" *ngIf="isDayView()">
+  <ng-container *ngIf="isDayView()">
+    
   </ng-container>
 </div>
-<ng-container *ngIf="isDayView()">
-    
-</ng-container>

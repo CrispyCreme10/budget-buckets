@@ -9,9 +9,11 @@
 h3 {
   text-align: center;
   margin: 0 10px;
-  width: 130px;
+  width: fit-content;
   user-select: none;
 }
+
+/* HEADER TITLE */
 
 #header-title {
   display: flex;
@@ -21,15 +23,9 @@ h3 {
   grid-column-start: 2;
 }
 
-#header-title > fa-icon {
-  font-size: 20px;
-}
+/* CALENDAR VIEW ACTIONS */
 
-#header-title > fa-icon:hover {
-  cursor: pointer;
-}
-
-#calendar-view-icons {
+#calendar-view-actions {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -39,31 +35,53 @@ h3 {
   font-size: 25px;
 }
 
-#calendar-view-icons > fa-icon {
+#calendar-view-actions > fa-icon {
   padding: 5px 10px;
   border-radius: 10px;
   margin-right: 10px;
 }
 
-#calendar-view-icons > fa-icon:hover {
+#calendar-view-actions> fa-icon {
   cursor: pointer;
+}
+
+#calendar-view-actions > .view-action:hover {
   background-color: #444;
 }
 
-.cell-container {
-  display: grid;
-  grid-template: 0.3fr repeat(6, 1fr) / repeat(7, 1fr);
-  
+#today-btn {
+  user-select: none;
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: var(--box-dark);
+  color: #ddd;
+  margin-right: 10px;
+}
+
+/* VIEW CONTAINERS */
+.view-container {
   height: 95%;
 }
 
-.cell-container .day-header {
+#month-view {
+  display: grid;
+  grid-template: 0.3fr repeat(6, 1fr) / repeat(7, 1fr);
+}
+
+#week-view {
+  display: grid;
+  grid-template: repeat(2, 0.05fr) 1fr / repeat(7, 1fr);
+}
+
+.view-container .day-header {
   color: #ddd;
   text-align: center;
   user-select: none;
 }
 
-.cell {
+#cell {
   display: grid;
   grid-template: repeat(4, 25%) / 1fr;  
 
@@ -73,15 +91,34 @@ h3 {
   background-color: var(--box-light);
 }
 
-.cell div:nth-child(1) {
-  justify-self: center;
-}
-
-.cell .date-text {
+#cell .date-text {
   display: flex;
   justify-content: center;
   align-items: center;
   
+  width: fit-content;
+  padding: 12px;
+  border-radius: 30px;
+  user-select: none;
+}
+
+#cell div:nth-child(1) {
+  justify-self: center;
+}
+
+#week-col {
+  display: flex;
+  justify-content: center;
+
+  color: #ddd;
+}
+
+#week-col .date-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
   width: fit-content;
   padding: 12px;
   border-radius: 30px;

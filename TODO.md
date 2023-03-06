@@ -9,3 +9,5 @@
 - Handle responsiveness
 - Implement Explorer footer icons tooltips
 - Expand Calendar to fill all available space + some padding
+- [Future] Add Reminders
+- [Future] Add Events
