@@ -31,7 +31,7 @@
     ></fa-icon>
   </div>
 </div>
-<div id="month-view" class="view-container" *ngIf="isMonthView()">
+<div id="month-view" class="view-container" [ngStyle]="monthViewStyles" *ngIf="isMonthView()">
   <div class="day-header">Sunday</div>
   <div class="day-header">Monday</div>
   <div class="day-header">Tuesday</div>

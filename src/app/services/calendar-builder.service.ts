@@ -26,4 +26,8 @@ export class CalendarBuilderService {
 
     return dates;
   }
+  
+  daysInMonth(month: number, year: number) {
+    return new Date(year, month, 0).getDate();
+  }
 }

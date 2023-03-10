@@ -1,28 +1,35 @@
+import { CalendarBuilderService } from './../../services/calendar-builder.service';
 import { Component } from '@angular/core';
-import { faAngleLeft, faAngleRight, faCalendarDay, faCalendarDays, faCalendarWeek } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleLeft,
+  faAngleRight,
+  faCalendarDay,
+  faCalendarDays,
+  faCalendarWeek,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface CalendarDate {
-  date: Date,
-  dateStr: string,
-  isInCurrMonth: boolean
+  date: Date;
+  dateStr: string;
+  isInCurrMonth: boolean;
 }
 
 const longMonthYear: Intl.DateTimeFormatOptions = {
-  month: "long",
-  year: "numeric"
+  month: 'long',
+  year: 'numeric',
 };
 const shortMonthYear: Intl.DateTimeFormatOptions = {
-  month: "short",
-  year: "numeric"
+  month: 'short',
+  year: 'numeric',
 };
 const shortMonth: Intl.DateTimeFormatOptions = {
-  month: "short"
+  month: 'short',
 };
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent {
   // consts
@@ -33,8 +40,8 @@ export class CalendarComponent {
 
   // properties
   currDate = new Date(Date.now());
-  monthViewWeeks: number = 6;
   calendarDates: CalendarDate[] = [];
+  monthViewStyles = {};
   dateTextStyles = {};
   currentView = '';
   calendarViewTitle = '';
@@ -47,6 +54,8 @@ export class CalendarComponent {
   faCalendarWeek = faCalendarWeek;
   faCalendarDay = faCalendarDay;
 
+  constructor(private calendarService: CalendarBuilderService) {}
+
   ngOnInit() {
     this.setCalendarView(this.WEEK);
   }
@@ -58,31 +67,62 @@ export class CalendarComponent {
     this.calendarDates = [];
     const dateYear = this.currDate.getFullYear();
     const dateMonth = this.currDate.getMonth();
-    const firstOfMonth = new Date(dateYear, dateMonth, 1)
+    const firstOfMonth = new Date(dateYear, dateMonth, 1);
     const calendarDate = new Date(firstOfMonth);
     // set first calendar date to the first day in the 6-week calendar (can creep into previous month)
     calendarDate.setDate(calendarDate.getDate() - firstOfMonth.getDay());
 
     // execution
-    for (let count = 0; count < this.DAYS_IN_WEEK * this.monthViewWeeks; count++) {
+
+    let monthViewWeeks: number = 5;
+    this.monthViewStyles = {
+      'grid-template': '0.3fr repeat(5, 1fr) / repeat(7, 1fr)',  
+    }
+
+    // Conditionals for increasing +1 month row to 7 rows in total
+    // if 31 days in month && first of month is a friday or saturday || 30 days in month && first of month is saturday
+    const daysInCurrMonth = this.calendarService.daysInMonth(
+      dateMonth,
+      dateYear
+    );
+    const firstOfMonthDay = firstOfMonth.getDay();
+    if (
+      (firstOfMonthDay === 6 &&
+        (daysInCurrMonth === 31 || daysInCurrMonth === 30)) ||
+      (firstOfMonthDay === 5 && daysInCurrMonth === 31)
+    ) {
+      monthViewWeeks = 6;
+      this.monthViewStyles = {
+        'grid-template': '0.3fr repeat(6, 1fr) / repeat(7, 1fr)',
+      };
+    }
+
+    for (let count = 0; count < this.DAYS_IN_WEEK * monthViewWeeks; count++) {
       const calendarMonth = calendarDate.getMonth();
       let formattedDate = calendarDate.getDate().toString();
       if (calendarMonth !== dateMonth) {
         const options: Intl.DateTimeFormatOptions = {
-          month: "short"
-        }
-        formattedDate = `${new Intl.DateTimeFormat("en-US", options).format(calendarDate)} ${formattedDate}`;
+          month: 'short',
+        };
+        formattedDate = `${new Intl.DateTimeFormat('en-US', options).format(
+          calendarDate
+        )} ${formattedDate}`;
       }
       this.calendarDates.push({
         date: new Date(calendarDate),
         dateStr: formattedDate,
-        isInCurrMonth: calendarMonth === dateMonth && calendarDate.getFullYear() === dateYear
-      })
+        isInCurrMonth:
+          calendarMonth === dateMonth &&
+          calendarDate.getFullYear() === dateYear,
+      });
       calendarDate.setDate(calendarDate.getDate() + 1);
     }
-    
+
     // set view title
-    this.calendarViewTitle = new Intl.DateTimeFormat("en-US", longMonthYear).format(this.currDate);
+    this.calendarViewTitle = new Intl.DateTimeFormat(
+      'en-US',
+      longMonthYear
+    ).format(this.currDate);
   }
 
   buildCalendarWeek() {
@@ -102,26 +142,52 @@ export class CalendarComponent {
       this.calendarDates.push({
         date: new Date(calendarDate),
         dateStr: calendarDate.getDate().toString(),
-        isInCurrMonth: calendarDate.getMonth() === dateMonth && calendarDate.getFullYear() === dateYear
-      })
+        isInCurrMonth:
+          calendarDate.getMonth() === dateMonth &&
+          calendarDate.getFullYear() === dateYear,
+      });
       if (count < this.DAYS_IN_WEEK - 1) {
         calendarDate.setDate(calendarDate.getDate() + 1);
       }
     }
 
     // set view title
-    if (startMonth === calendarDate.getMonth() && startYear === calendarDate.getFullYear()) {
+    if (
+      startMonth === calendarDate.getMonth() &&
+      startYear === calendarDate.getFullYear()
+    ) {
       // March 2023 (Single Month, Same Year)
-      this.calendarViewTitle = new Intl.DateTimeFormat("en-US", longMonthYear).format(calendarDate);
-    } else if (startMonth !== calendarDate.getMonth() && startYear === calendarDate.getFullYear()) {
+      this.calendarViewTitle = new Intl.DateTimeFormat(
+        'en-US',
+        longMonthYear
+      ).format(calendarDate);
+    } else if (
+      startMonth !== calendarDate.getMonth() &&
+      startYear === calendarDate.getFullYear()
+    ) {
       // Feb - Mar 2023 (Multi Month, Same Year)
-      const prevShortMonth = new Intl.DateTimeFormat("en-US", shortMonth).format(new Date(startYear, startMonth, 1));
-      const currShortMonthYear = new Intl.DateTimeFormat("en-US", shortMonthYear).format(calendarDate);
+      const prevShortMonth = new Intl.DateTimeFormat(
+        'en-US',
+        shortMonth
+      ).format(new Date(startYear, startMonth, 1));
+      const currShortMonthYear = new Intl.DateTimeFormat(
+        'en-US',
+        shortMonthYear
+      ).format(calendarDate);
       this.calendarViewTitle = `${prevShortMonth} - ${currShortMonthYear}`;
-    } else if (startMonth !== calendarDate.getMonth() && startYear !== calendarDate.getFullYear()) {
+    } else if (
+      startMonth !== calendarDate.getMonth() &&
+      startYear !== calendarDate.getFullYear()
+    ) {
       // Dec 2022 - Jan 2023 (Multi Month, Diff Year)
-      const prevShortMonthYear = new Intl.DateTimeFormat("en-US", shortMonthYear).format(new Date(startYear, startMonth, 1));
-      const currShortMonthYear = new Intl.DateTimeFormat("en-US", shortMonthYear).format(calendarDate);
+      const prevShortMonthYear = new Intl.DateTimeFormat(
+        'en-US',
+        shortMonthYear
+      ).format(new Date(startYear, startMonth, 1));
+      const currShortMonthYear = new Intl.DateTimeFormat(
+        'en-US',
+        shortMonthYear
+      ).format(calendarDate);
       this.calendarViewTitle = `${prevShortMonthYear} - ${currShortMonthYear}`;
     } else {
       throw new Error('Unknown Month/Year configuration');
@@ -131,20 +197,23 @@ export class CalendarComponent {
   buildCalendarDay() {
     // setup
     const longMonthDayYear: Intl.DateTimeFormatOptions = {
-      month: "long",
+      month: 'long',
       day: 'numeric',
-      year: "numeric"
+      year: 'numeric',
     };
     this.calendarDates = [];
 
     // execution
 
     // set view title
-    this.calendarViewTitle = new Intl.DateTimeFormat("en-US", longMonthDayYear).format(this.currDate);
+    this.calendarViewTitle = new Intl.DateTimeFormat(
+      'en-US',
+      longMonthDayYear
+    ).format(this.currDate);
   }
 
   getCalendarViewStyles(view: string): any {
-    return this.currentView === view ? { 'background-color': '#04395e'} : {};
+    return this.currentView === view ? { 'background-color': '#04395e' } : {};
   }
 
   setCalendarView(view: string) {
@@ -160,7 +229,7 @@ export class CalendarComponent {
           this.buildCalendarDay();
           break;
         default:
-          throw new Error("Error setting Calendar data");
+          throw new Error('Error setting Calendar data');
       }
 
       this.currentView = view;
@@ -180,7 +249,7 @@ export class CalendarComponent {
         this.buildCalendarDay();
         break;
       default:
-        throw new Error("Error setting Calendar data");
+        throw new Error('Error setting Calendar data');
     }
   }
 
@@ -196,12 +265,13 @@ export class CalendarComponent {
     return this.currentView === this.DAY;
   }
 
-
   isDateToday(dateToCompare: Date): boolean {
     const todaysDate = new Date(Date.now());
-    return dateToCompare.getFullYear() === todaysDate.getFullYear() &&
-          dateToCompare.getMonth() === todaysDate.getMonth() &&
-          dateToCompare.getDate() === todaysDate.getDate();
+    return (
+      dateToCompare.getFullYear() === todaysDate.getFullYear() &&
+      dateToCompare.getMonth() === todaysDate.getMonth() &&
+      dateToCompare.getDate() === todaysDate.getDate()
+    );
   }
 
   shiftView(shiftVal: number) {
@@ -220,8 +290,8 @@ export class CalendarComponent {
           this.buildCalendarDay();
           break;
         default:
-          throw new Error("Error shifting Calendar");
-      }      
+          throw new Error('Error shifting Calendar');
+      }
     }
   }
 

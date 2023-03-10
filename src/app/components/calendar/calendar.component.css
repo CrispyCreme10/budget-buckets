@@ -71,7 +71,7 @@
 
 #month-view {
   display: grid;
-  grid-template: 0.3fr repeat(6, 1fr) / repeat(7, 1fr);
+  /* grid-template: 0.3fr repeat(6, 1fr) / repeat(7, 1fr); */
 }
 
 #week-view {
