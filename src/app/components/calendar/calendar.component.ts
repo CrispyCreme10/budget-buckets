@@ -76,7 +76,7 @@ export class CalendarComponent {
 
     let monthViewWeeks: number = 5;
     this.monthViewStyles = {
-      'grid-template': '0.3fr repeat(5, 1fr) / repeat(7, 1fr)',  
+      'grid-template': `0.3fr repeat(${monthViewWeeks}, 1fr) / repeat(7, 1fr)`,  
     }
 
     // Conditionals for increasing +1 month row to 7 rows in total
@@ -93,7 +93,7 @@ export class CalendarComponent {
     ) {
       monthViewWeeks = 6;
       this.monthViewStyles = {
-        'grid-template': '0.3fr repeat(6, 1fr) / repeat(7, 1fr)',
+        'grid-template': `0.3fr repeat(${monthViewWeeks}, 1fr) / repeat(7, 1fr)`,
       };
     }
 
