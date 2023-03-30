@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
@@ -19,20 +18,10 @@ import { ExpensesComponent } from './components/expenses/expenses.component';
 import { ExpenseCategoryComponent } from './components/expense-category/expense-category.component';
 import { SidebarCollapsableComponent } from './components/sidebar-collapsable/sidebar-collapsable.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
-
-
-// const appRoutes: Routes = [
-//   {
-//     path: '',
-//     component: TemplatesComponent,
-//     children: [
-//       {
-//         path: 'template/:name',
-//         component: TemplateDetailComponent
-//       }
-//     ]
-//   }
-// ];
+import { AppRoutingModule } from './app-routing.module';
+import { TopnavComponent } from './topnav/topnav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -51,12 +40,15 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     ExpenseCategoryComponent,
     SidebarCollapsableComponent,
     DatePickerComponent,
+    TopnavComponent,
+    DashboardComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
-    // RouterModule.forRoot(appRoutes, { enableTracing: true }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

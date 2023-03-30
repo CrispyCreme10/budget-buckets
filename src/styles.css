@@ -2,17 +2,29 @@
   --box-light: #333333;
   --box-medium: #252526;
   --box-dark: #1e1e1e;
+
+  --main-green: #00cc4d;
 }
 
 html, body {
   height: 100%;
-}
-
-app-root, app-simple-view {
-  display: block;
-  height: 100%;
-}
-
-body {
+  width: 100%;
   margin: 0;
+  padding: 0;
+
+  user-select: none;
+}
+
+/* THEME COLORS */
+.theme-bg-green {
+    background-color: var(--main-green);
+}
+
+/* FA ICONS */
+fa-icon.hoverable:hover {
+    cursor: pointer;
+}
+
+fa-icon.fs-25 {
+    font-size: 25px;
 }
