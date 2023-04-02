@@ -3,7 +3,11 @@
   --box-medium: #252526;
   --box-dark: #1e1e1e;
 
-  --main-green: #00cc4d;
+  --light-primary: #00cc4d;
+  --light-secondary: #fff;
+
+  --dark-primary: #333333;
+  --dark-secondary: #303030;
 }
 
 html, body {
@@ -17,7 +21,7 @@ html, body {
 
 /* THEME COLORS */
 .theme-bg-green {
-    background-color: var(--main-green);
+    background-color: var(--light-primary);
 }
 
 /* FA ICONS */
@@ -25,6 +29,6 @@ fa-icon.hoverable:hover {
     cursor: pointer;
 }
 
-fa-icon.fs-25 {
-    font-size: 25px;
+fa-icon.fs-main {
+    font-size: 30px;
 }

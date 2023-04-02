@@ -6,7 +6,7 @@
     height: 70px;
     padding: 5px 20px;
 
-    background-color: var(--main-green);
+    background-color: var(--light-primary);
     color: white;
 }
 
@@ -15,10 +15,17 @@
     align-items: center;
 }
 
+#right-items {
+    display: flex;
+    align-items: center;
+}
+
 #title {
     margin: 0 30px;
 
+    color: var(--light-secondary);
     font-size: 35px;
+    text-decoration: none;
 }
 
 /* PAGES */
@@ -42,8 +49,13 @@
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Theme */
+/* THEME */
 #toggle-theme {
     padding: 10px;
     border-right: 2px solid #fff;
+}
+
+/* ACTIONS */
+#actions fa-icon {
+    padding: 5px 10px;
 }
