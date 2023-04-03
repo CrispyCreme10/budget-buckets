@@ -1,5 +1,5 @@
 import express from 'express';
-const router = express.Router();
+export const router = express.Router();
 
 router.use((req, res, next) => {
     console.log('Time: ', Date.now());
@@ -33,5 +33,3 @@ router.get('/:id', (req, res) => {
         amount: -37.54
     }));
 });
-
-module.exports = router;

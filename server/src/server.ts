@@ -1,14 +1,15 @@
 import express from 'express';
-import dotenv from 'dotenv';
-dotenv.config();
-
-const transactions = require('./db/mongo');
+import { router as userRoutes } from './routes/users.route'
+import { config } from "./utils/env";
 
 const app = express();
-const port = 3000;
+const port = config.port;
+
+// middleware
+
 
 // routes
-app.use('/transactions', transactions)
+app.use('/users', userRoutes)
 
 app.listen(port, () => {
     return console.log(`Express is listening at http://localhost:${port}`);
