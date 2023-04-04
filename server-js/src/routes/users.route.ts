@@ -39,10 +39,11 @@ router.post('/', jsonParser, async (req, res) => {
         const newUser = req.body as User;
         console.log('New User: ', newUser);
         let success = false;
+        let reason = '';
         if (newUser) {
-            success = await addUser(newUser);
+            [success, reason] = await addUser(newUser);
             if (!success)
-                console.log('unsuccessful'); // LOG
+                console.log(reason); // LOG
             res.sendStatus(201);
             return;
         }
