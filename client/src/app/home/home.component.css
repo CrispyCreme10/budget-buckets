@@ -1,0 +1,27 @@
+.bg-main {
+  position: absolute;
+  transform: skewY(-35deg) scale(2) translateY(300px);
+}
+
+.title {
+  animation: fadeInSlide 1.75s ease-in-out;
+  transform: translate(0, 10vh);
+  margin-left: 5svw;
+}
+
+.subtitle {
+  animation: fadeInSlide 1.5s ease-in-out;
+  transform: translate(0, 10vh);
+  margin-left: 5svw;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 10vh);
+  }
+}
